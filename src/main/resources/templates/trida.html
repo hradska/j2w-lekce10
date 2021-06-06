@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Škola</title>
+</head>
+<body>
+<main class="container">
+    <h1>Údaje o třídě</h1>
+    <h2 th:text="${trida.nazev}">5.A</h2>
+    <h3 th:text="${trida.tridniUcitel.jmeno} + ' ' + ${trida.tridniUcitel.prijmeni}">
+        Petr Vonásek
+    </h3>
+
+    <a th:each="zak : ${trida.studenti}" th:href="@{/zak/{id}(id=${zak.id})}">
+        <div th:text="${zak.prijmeni} + ' ' + ${zak.jmeno}">Koudelka Pepa</div>
+    </a>
+
+    <p>
+        <a href="/">Zpět na seznam tříd</a>
+    </p>
+</main>
+</body>
+</html>

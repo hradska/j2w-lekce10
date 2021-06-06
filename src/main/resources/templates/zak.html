@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Škola</title>
+</head>
+<body>
+<main class="container">
+    <h1>Osobní údaje žáka</h1>
+    <h2 th:text="${zak.jmeno} + ' ' + ${zak.prijmeni}">
+        Koudelka Pepa
+    </h2>
+    <h3>
+        <a th:href="@{/{id}(id=${zak.trida.id})}" th:text="${zak.trida.nazev}"></a>
+    </h3>
+    <div th:each="rodic : ${zak.rodice}">
+        <div th:text="
+            ${rodic.jmeno} + ' ' +
+            ${rodic.prijmeni} + ' ' +
+            ${rodic.email} + ' ' +
+            ${rodic.telefon}"></div>
+    </div>
+
+    <p>
+        <a href="/">Zpět na seznam tříd</a>
+    </p>
+</main>
+</body>
+</html>
